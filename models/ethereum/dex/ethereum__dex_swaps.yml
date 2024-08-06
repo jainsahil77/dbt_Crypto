@@ -2,6 +2,7 @@ version: 2
 models:
   - name: ethereum__dex_swaps
     description: Deprecating soon - please migrate query to ethereum database by 9/13
+    tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - DIRECTION
