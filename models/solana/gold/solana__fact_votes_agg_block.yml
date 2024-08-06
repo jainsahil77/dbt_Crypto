@@ -1,0 +1,11 @@
+version: 2
+models:
+  - name: solana__fact_votes_agg_block
+    description: deprecating soon - please migrate query to solana database by changing 'from' statements from `flipside_prod_db.solana.<table>` to `solana.core.<table>`
+    columns:
+      - name: BLOCK_TIMESTAMP
+        description: "{{ doc('solana_block_timestamp') }}"
+      - name: BLOCK_ID
+        description: "{{ doc('solana_block_id') }}"
+      - name: NUM_VOTES
+        description: The number of vote events that occurred within the block
