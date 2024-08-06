@@ -1,0 +1,69 @@
+version: 2
+models:
+  - name: algorand__asset_transfer_transaction
+    description: deprecating soon - please migrate query to algorand database by changing 'from' statements from `flipside_prod_db.algorand.<table>` to algorand.<schema>.<table> 
+    columns:
+      - name: BLOCK_TIMESTAMP
+        description: "{{ doc('block_timestamp') }}"
+        tests:
+          - dbt_expectations.expect_column_to_exist   
+      - name: BLOCK_ID
+        description: "{{ doc('algo_block_id') }}"
+        tests:
+          - not_null
+      - name: INTRA
+        description: "{{ doc('intra') }}"
+        tests:
+          - not_null
+      - name: TX_ID
+        description: "{{ doc('tx_id') }}"
+        tests:
+          - not_null
+      - name: INNER_TX
+        description: "{{ doc('inner_tx') }}"
+        tests:
+          - not_null
+      - name: ASSET_ID
+        description: "{{ doc('algo_asset_id') }}"
+        tests:
+          - not_null:
+              where: NOT (BLOCK_TIMESTAMP::date = '2022-08-18' and TX_ID = 'BXRZUXF3PKHEHVDVH6THLRZ5U2X6IDWPANAYZNQLLATOC6EJAOJQ' and intra = 17) and NOT (BLOCK_TIMESTAMP::date = '2022-09-22' and TX_ID = 'BIAVIDEC2HBAVMEF2GNFEA26MIOVHRBNQOME4KMHRCAY67FLXTBA' and intra = 54) 
+      - name: SENDER
+        tests:
+          - not_null     
+      - name: FEE
+        description: "{{ doc('fee') }}"
+        tests:
+          - dbt_expectations.expect_column_to_exist  
+      - name: ASSET_SENDER
+        description: "The sender of the transfer. The regular sender field should be used and this one set to the zero value for regular transfers between accounts. If this value is nonzero, it indicates a clawback transaction where the sender is the asset's clawback address and the asset sender is the address from which the funds will be withdrawn."
+        tests:
+          - dbt_expectations.expect_column_to_exist  
+      - name: ASSET_RECEIVER
+        description: "The recipient of the asset transfer."
+        tests:
+          - dbt_expectations.expect_column_to_exist  
+      - name: ASSET_AMOUNT
+        description: "The amount of the asset to be transferred. A zero amount transferred to self allocates that asset in the account's Asset map."
+        tests:
+          - dbt_expectations.expect_column_to_exist 
+      - name: ASSET_TRANSFERRED
+        description: "The Asset ID of the asset transferred in the asset transfer transaction."
+        tests:
+          - dbt_expectations.expect_column_to_exist
+      - name: TX_TYPE
+        tests:
+          - not_null
+      - name: TX_TYPE_NAME
+        tests:
+          - not_null
+      - name: GENESIS_HASH
+        tests:
+          - not_null
+      - name: TX_MESSAGE
+        tests:
+          - not_null
+      - name: EXTRA
+        description: "{{ doc('extra') }}"
+        tests:
+          - dbt_expectations.expect_column_to_exist
