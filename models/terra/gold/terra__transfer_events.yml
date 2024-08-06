@@ -33,9 +33,11 @@ models:
       - name: INITIAL_ACTION
         description: "Initial action for a transfer event"
         tests:
+          - not_null
       - name: CURRENT_ACTION
         description: "Current action for a transfer event"
         tests:
+          - not_null
       - name: SENDER
         description: "Transfer sender"
         tests:
