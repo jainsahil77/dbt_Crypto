@@ -1,0 +1,1 @@
+{{ sequence_distinct_gaps(ref('silver_terra__terraswap_pool_reserves'), "block_id") }}
