@@ -79,7 +79,6 @@ models:
         description: "The transfer amount in USD, it is calculated by the hourly price multiplied by the transfer amount"
       - name: MSG_SENDER
         description: "The message sender, from message event types"
-        tests:
       - name: CONTRACT_ADDRESS
         description: "The contract address that is responsible for kicking off the transfer event, if applicable"
         tests:
