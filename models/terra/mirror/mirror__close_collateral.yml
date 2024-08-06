@@ -39,7 +39,7 @@ models:
         tests:
           - not_null
       - name: TAX_AMOUNT_USD
-        tests:
+        #tests:
       - name: TAX_CURRENCY
         tests:
           - not_null
