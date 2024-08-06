@@ -50,26 +50,18 @@ models:
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: terra[0-9a-zA-Z]{39,40}
       - name: EVENT_FROM_ADDRESS_LABEL
-        tests:
       - name: EVENT_FROM_ADDRESS_NAME
-        tests:
       - name: EVENT_FROM_LABEL_SUBTYPE
-        tests:
       - name: EVENT_FROM_LABEL_TYPE
-        tests:
       - name: EVENT_TO
         tests:
           - not_null
           - dbt_expectations.expect_column_values_to_match_regex:
               regex: terra[0-9a-zA-Z]{39,40}
       - name: EVENT_TO_ADDRESS_LABEL
-        tests:
       - name: EVENT_TO_ADDRESS_NAME
-        tests:
       - name: EVENT_TO_LABEL_SUBTYPE
-        tests:
       - name: EVENT_TO_LABEL_TYPE
-        tests:
       - name: MSG_TYPE
         tests:
           - not_null
