@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: thorchain__active_vault_events
+    description: deprecating soon - please migrate query to <chain> database by changing 'from' statements from `flipside_prod_db.<chain>.<table>` to <chain>.core.<table> schema
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - BLOCK_TIMESTAMP
+            - BLOCK_ID
+            - ADD_ASGARD_ADDR
+    columns:
+      - name: BLOCK_TIMESTAMP
+        tests:
+          - not_null
+      - name: BLOCK_ID
+        tests:
+          - not_null
+      - name: ADD_ASGARD_ADDR
+        tests:
+          - not_null

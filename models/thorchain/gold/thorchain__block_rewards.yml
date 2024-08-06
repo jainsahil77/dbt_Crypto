@@ -1,0 +1,33 @@
+version: 2
+models:
+  - name: thorchain__block_rewards
+    description: deprecating soon - please migrate query to <chain> database by changing 'from' statements from `flipside_prod_db.<chain>.<table>` to <chain>.core.<table> schema
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - DAY
+    columns:
+      - name: DAY
+        tests:
+          - not_null
+          - dbt_expectations.expect_row_values_to_have_recent_data:
+              datepart: day
+              interval: 1
+      - name: LIQUIDITY_FEE
+        tests:
+          - not_null
+      - name: BLOCK_REWARDS
+        tests:
+          - not_null
+      - name: EARNINGS
+        tests:
+          - not_null
+      - name: BONDING_EARNINGS
+        tests:
+          - not_null
+      - name: LIQUIDITY_EARNINGS
+        tests:
+          - not_null
+      - name: AVG_NODE_COUNT
+        tests:
+          - not_null
