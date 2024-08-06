@@ -54,7 +54,7 @@ models:
           - not_null:
               where: CHAIN_ID = 'COLUMBUS-4' #Col-5 does not have this field
       - name: LINK #Not all proposals have a link
-        tests:
+        #tests:
       - name: DESCRIPTION
         tests:
           - not_null:
