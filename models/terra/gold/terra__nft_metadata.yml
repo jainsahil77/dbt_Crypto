@@ -52,8 +52,7 @@ models:
           - not_null
       - name: token_metadata_uri
         tests:
-          # - not_null:
-          #   where: contract_name <> 'Galactic Punks'
+          - not_null
       - name: token_name
         tests:
           - not_null
