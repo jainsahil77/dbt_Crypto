@@ -26,9 +26,9 @@ models:
         tests:
           - not_null
       - name: INITIAL_ACTION
-        tests:
+        #tests:
       - name: CURRENT_ACTION
-        tests:
+        #tests:
       - name: SENDER
         tests:
           - not_null:
@@ -47,7 +47,7 @@ models:
                 - decimal
                 - float
       - name: MSG_SENDER
-        tests:
+        #tests:
       - name: CONTRACT_ADDRESS
         tests:
           - dbt_expectations.expect_column_values_to_match_regex:
