@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: consoles_terra__addresses_staking_LUNA
+    description: Total number of addresses staking LUNA over time
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - DATE
+    columns:
+      - name: DATE
+        description: Date that corresponds to total number of addresses
+        tests:
+          - not_null
+          - dbt_expectations.expect_row_values_to_have_recent_data:
+              datepart: day
+              interval: 3
+      - name: ADDRESSES
+        description: Total Balance of address
+        tests: 
+          - not_null
