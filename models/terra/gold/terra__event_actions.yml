@@ -53,6 +53,7 @@ models:
       - name: ACTION_METHOD
         description: The action or method within an event
         tests:
+          - not_null
       - name: ACTION_LOG
         description: The log that provides detail (amounts, to, from, etc.) to an action or method
         tests:
